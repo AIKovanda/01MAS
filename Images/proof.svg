@@ -1,0 +1,143 @@
+<?xml version="1.0" encoding="ISO-8859-1" standalone="no"?>
+
+<svg 
+     version="1.1"
+     baseProfile="full"
+     xmlns="http://www.w3.org/2000/svg"
+     xmlns:xlink="http://www.w3.org/1999/xlink"
+     xmlns:ev="http://www.w3.org/2001/xml-events"
+     width="32.60853508643698cm"
+     height="11.21809661865762cm"
+     viewBox="0 0 342 117"
+     >
+<title>
+
+</title>
+<g stroke-linejoin="miter" stroke-dashoffset="0.0000" stroke-dasharray="none" stroke-width="1.0000" stroke-miterlimit="10.000" stroke-linecap="square">
+<g id="misc">
+</g><!-- misc -->
+<g id="layer0">
+<clipPath id="clip2fc1a5e2-4aef-49f9-b81e-6a8dc4755cfd">
+  <path d="M 0.0000 0.0000 L 0.0000 118.00 L 343.00 118.00 L 343.00 0.0000 z"/>
+</clipPath>
+<g clip-path="url(#clip1)">
+<g stroke-linejoin="round" stroke-width="2.5000" stroke-linecap="round" fill="none" stroke-opacity="1.0000" stroke="#000000">
+  <path d="M 62.042 77.353 L 64.312 74.553 M 64.312 74.553 L 66.992 71.447 L 69.672 68.536 L 72.352 65.802 L 75.031 63.230 L 77.711 60.806 L 80.391 58.519 L 83.070 56.357 L 85.750 54.312 M 85.750 54.312 L 88.430 52.375 L 91.109 50.540 L 93.789 48.799 L 96.469 47.148 L 99.148 45.580 L 101.83 44.092 L 104.51 42.679 L 107.19 41.336 L 109.87 40.062 L 112.55 38.852 L 115.23 37.703 L 117.91 36.614 L 120.59 35.581 L 123.27 34.602 L 125.95 33.675 L 128.62 32.799 L 131.30 31.971 L 133.98 31.190 L 136.66 30.455 L 139.34 29.764 L 142.02 29.117 L 144.70 28.511 L 147.38 27.945 L 150.06 27.420 L 152.74 26.933 L 155.42 26.483 L 158.10 26.068 L 160.78 25.687 L 163.46 25.336 L 166.14 25.010 L 168.82 24.701 L 171.50 24.400 M 171.50 24.400 L 174.18 24.091 L 176.86 23.757 L 179.54 23.371 L 182.22 22.905 L 184.90 22.325 L 187.58 21.598 L 190.26 20.695 L 192.94 19.592 L 195.62 18.286 L 198.30 16.791 L 200.98 15.150 L 203.66 13.433 L 206.34 11.736 L 209.02 10.175 L 211.70 8.8755 L 214.38 7.9556 L 217.05 7.5154 L 218.39 7.4977 L 219.73 7.6218 L 222.41 8.2994 L 223.75 8.8479 L 225.09 9.5279 L 227.77 11.244 L 230.45 13.352 L 233.13 15.733 L 235.81 18.266 L 238.49 20.833 L 241.17 23.340 L 243.85 25.715 L 246.53 27.916 L 249.21 29.927 L 251.89 31.755 L 254.57 33.420 L 257.25 34.957 M 257.25 34.957 L 259.93 36.399 L 262.61 37.782 L 265.29 39.139 L 267.97 40.496 M 267.97 40.496 L 270.65 41.876 M 270.65 41.876 L 272.42 42.808"/>
+<title>Function f</title>
+<desc>Function f: f(x) = hhhh(x) + gggg(x)</desc>
+
+</g> <!-- drawing style -->
+</g> <!-- clip1 -->
+<clipPath id="clip4e0468b9-80b4-4cf9-98e3-9ac6271edb06">
+  <path d="M 0.0000 0.0000 L 0.0000 118.00 L 343.00 118.00 L 343.00 0.0000 z"/>
+</clipPath>
+<g clip-path="url(#clip2)">
+<g stroke-linejoin="round" stroke-linecap="round" fill="none" stroke-opacity="1.0000" stroke="#000000">
+  <path d="M -5.0000 93.560 L 348.00 93.560"/>
+<title>Line h</title>
+<desc>h: y = 0</desc>
+
+</g> <!-- drawing style -->
+</g> <!-- clip2 -->
+<clipPath id="clip512ca5c4-173a-4787-88d7-82bcc979d041">
+  <path d="M 0.0000 0.0000 L 0.0000 118.00 L 343.00 118.00 L 343.00 0.0000 z"/>
+</clipPath>
+<g clip-path="url(#clip3)">
+<g stroke-linejoin="round" stroke-width="2.0000" stroke-linecap="round" fill="none" stroke-opacity="1.0000" stroke="#000000">
+  <path d="M 62.042 114.60 L 62.042 0.0000"/>
+<title>Ray d</title>
+<desc>Ray d: Ray through A, D</desc>
+
+</g> <!-- drawing style -->
+</g> <!-- clip3 -->
+<clipPath id="clip5b2e47b8-17ca-426e-bd99-9acfe3e6d7b3">
+  <path d="M 0.0000 0.0000 L 0.0000 118.00 L 343.00 118.00 L 343.00 0.0000 z"/>
+</clipPath>
+<g clip-path="url(#clip4)">
+<g stroke-linejoin="round" stroke-width="2.0000" stroke-linecap="round" fill="none" stroke-opacity="1.0000" stroke="#000000">
+  <path d="M 167.23 114.60 L 167.23 -1.4211E-14"/>
+<title>Ray e</title>
+<desc>Ray e: Ray through C, E</desc>
+
+</g> <!-- drawing style -->
+</g> <!-- clip4 -->
+<clipPath id="clip71744d49-3094-45b8-955f-56b903bb1157">
+  <path d="M 0.0000 0.0000 L 0.0000 118.00 L 343.00 118.00 L 343.00 0.0000 z"/>
+</clipPath>
+<g clip-path="url(#clip5)">
+<g stroke-linejoin="round" stroke-width="2.0000" stroke-linecap="round" fill="none" stroke-opacity="1.0000" stroke="#000000">
+  <path d="M 272.42 114.60 L 272.42 0.0000"/>
+<title>Ray g</title>
+<desc>Ray g: Ray through B, F</desc>
+
+</g> <!-- drawing style -->
+</g> <!-- clip5 -->
+<clipPath id="clip1274a499-33d5-4e35-9f52-79d74876f1be">
+  <path d="M 0.0000 0.0000 L 0.0000 118.00 L 343.00 118.00 L 343.00 0.0000 z"/>
+</clipPath>
+<g clip-path="url(#clip6)">
+<g fill-opacity="1.0000" fill-rule="nonzero" stroke="none" fill="#000000">
+  <path d="M 66.042 77.353 C 66.042 79.562 64.251 81.353 62.042 81.353 C 59.833 81.353 58.042 79.562 58.042 77.353 C 58.042 75.144 59.833 73.353 62.042 73.353 C 64.251 73.353 66.042 75.144 66.042 77.353 z"/>
+<title>Point D</title>
+<desc>Point D: Intersection point of f, c with initial value (1.4, 0.23)</desc>
+
+</g> <!-- drawing style -->
+</g> <!-- clip6 -->
+<clipPath id="clipae44555a-4e7d-46bd-ab4c-3b49f0be40fb">
+  <path d="M 0.0000 0.0000 L 0.0000 118.00 L 343.00 118.00 L 343.00 0.0000 z"/>
+</clipPath>
+<g clip-path="url(#clip7)">
+<g stroke-linejoin="round" stroke-linecap="round" fill="none" stroke-opacity="1.0000" stroke="#000000">
+  <path d="M 66.042 77.353 C 66.042 79.562 64.251 81.353 62.042 81.353 C 59.833 81.353 58.042 79.562 58.042 77.353 C 58.042 75.144 59.833 73.353 62.042 73.353 C 64.251 73.353 66.042 75.144 66.042 77.353 z"/>
+<title>Point D</title>
+<desc>Point D: Intersection point of f, c with initial value (1.4, 0.23)</desc>
+
+</g> <!-- drawing style -->
+</g> <!-- clip7 -->
+<clipPath id="clip01a33504-ca90-4b11-818b-5984201f6538">
+  <path d="M 0.0000 0.0000 L 0.0000 118.00 L 343.00 118.00 L 343.00 0.0000 z"/>
+</clipPath>
+<g clip-path="url(#clip8)">
+<g fill-opacity="1.0000" fill-rule="nonzero" stroke="none" fill="#000000">
+  <path d="M 171.23 24.883 C 171.23 27.092 169.44 28.883 167.23 28.883 C 165.02 28.883 163.23 27.092 163.23 24.883 C 163.23 22.674 165.02 20.883 167.23 20.883 C 169.44 20.883 171.23 22.674 171.23 24.883 z"/>
+<title>Point E</title>
+<desc>Point E: Intersection point of f, b with initial value (2.4, 0.98)</desc>
+
+</g> <!-- drawing style -->
+</g> <!-- clip8 -->
+<clipPath id="clipbd235936-1605-47a5-8b88-07f3486fedca">
+  <path d="M 0.0000 0.0000 L 0.0000 118.00 L 343.00 118.00 L 343.00 0.0000 z"/>
+</clipPath>
+<g clip-path="url(#clip9)">
+<g stroke-linejoin="round" stroke-linecap="round" fill="none" stroke-opacity="1.0000" stroke="#000000">
+  <path d="M 171.23 24.883 C 171.23 27.092 169.44 28.883 167.23 28.883 C 165.02 28.883 163.23 27.092 163.23 24.883 C 163.23 22.674 165.02 20.883 167.23 20.883 C 169.44 20.883 171.23 22.674 171.23 24.883 z"/>
+<title>Point E</title>
+<desc>Point E: Intersection point of f, b with initial value (2.4, 0.98)</desc>
+
+</g> <!-- drawing style -->
+</g> <!-- clip9 -->
+<clipPath id="clip62e34bd9-b78b-4093-8713-3e47ecc45670">
+  <path d="M 0.0000 0.0000 L 0.0000 118.00 L 343.00 118.00 L 343.00 0.0000 z"/>
+</clipPath>
+<g clip-path="url(#clip10)">
+<g fill-opacity="1.0000" fill-rule="nonzero" stroke="none" fill="#000000">
+  <path d="M 276.42 42.808 C 276.42 45.017 274.63 46.808 272.42 46.808 C 270.21 46.808 268.42 45.017 268.42 42.808 C 268.42 40.599 270.21 38.808 272.42 38.808 C 274.63 38.808 276.42 40.599 276.42 42.808 z"/>
+<title>Point F</title>
+<desc>Point F: Intersection point of f, a with initial value (3.4, 0.72)</desc>
+
+</g> <!-- drawing style -->
+</g> <!-- clip10 -->
+<clipPath id="clip371cb1e2-b8c0-451d-9ecc-d07c2abb6151">
+  <path d="M 0.0000 0.0000 L 0.0000 118.00 L 343.00 118.00 L 343.00 0.0000 z"/>
+</clipPath>
+<g clip-path="url(#clip11)">
+<g stroke-linejoin="round" stroke-linecap="round" fill="none" stroke-opacity="1.0000" stroke="#000000">
+  <path d="M 276.42 42.808 C 276.42 45.017 274.63 46.808 272.42 46.808 C 270.21 46.808 268.42 45.017 268.42 42.808 C 268.42 40.599 270.21 38.808 272.42 38.808 C 274.63 38.808 276.42 40.599 276.42 42.808 z"/>
+<title>Point F</title>
+<desc>Point F: Intersection point of f, a with initial value (3.4, 0.72)</desc>
+
+</g> <!-- drawing style -->
+</g> <!-- clip11 -->
+</g><!-- layer0 -->
+</g> <!-- default stroke -->
+</svg> <!-- bounding box -->

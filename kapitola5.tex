@@ -1,0 +1,196 @@
+\chapter{Asymptotické testy hypotéz}
+
+Doposud jsme pracovali převážně s~formou testů statistických hypotéz, které využívaly odvozené (UMP,UMPU,LRT) nebo jinak odůvodněné (RT) testovací statistiky $T_n=T_n(\X)$, pro~které bylo možné odvodit konkrétní \textbf{přesné} rozdělení $T_n\big|_{H_0}\sim\FF_{T_n}$ za~platnosti $H_0$ pro~daný fixní rozsah $n$ náhodného výběru $(X_j)_{j=1}^n$. K~tomu byla vyžadována specifická znalost statistického modelu, např. Gaussovskost pro~t-test, F-test, ANOVA,...
+
+V mnoha případech však v~praxi, po~naměření nebo obdržení dat z~nějakého komplikovanějšího experimentu, narážíme na~dva problémy:
+\begin{enumerate}[a)]
+	\item Statistický model, ze~kterého pochází naše data, není znám (technologie měření není dostupná) nebo je znám pouze přibližně na~základě statistických testů shody dat s~předpoklá- daným rozdělením. Tyto testy však opět fungují pouze na~určité hladině spolehlivosti (signifikanci), jsou velmi často navíc založené pouze na~limitních větách, a~proto předpoklad statistického modelu pak může být zavádějící či dokonce chybný.
+	\item Statistický model sice umíme více méně přesně odhalit, ale je nepříznivý v~tom smyslu, že pro~něj nedokážeme explicitně dovodit rozdělení vhodné testovací statistiky $T_n\big|_{H_0}$ pro~dané fixní $n$. To často nastává, pokud data pochází z~nestandardních distribucí nebo z~více-komponentních distribučních směsí.
+\end{enumerate}
+
+Obě tyto komplikace se~dají překonat, pokud máme k~dispozici střední či vyšší rozsahy $n$ souborů naměřených dat. To umožňuje aproximovat rozdělení vhodně zvolené testovací statistiky $T_n\big|_{H_0}$ limitním rozdělením při~$n\to+\infty$ ve~smyslu (slabé) limity v~distribuci, tzn. $T_n\big|_{H_0}\Dto \mathrm{G}$, kde limitní distribuční funkce $\mathrm{G}$ je nezávislá na~neznámých parametrech modelu. Aby se~toho dalo dosáhnout, je někdy potřeba nalézt navíc posloupnosti $(a_n)_{n=1}^{+\infty}\in\R$, $(b_n)_{n=1}^{+\infty}>0$, pro~které
+$$ T_n'(\X)=\frac{T_n(\X)-a_n}{b_n}\bigg|_{H_0}\Dto \mathrm{G}\quad\Br{\text{tzn. }T_n'\sim\mathrm{A\mathrm{G}}(a_n,b_n^2)}. $$
+Následně použijeme přibližné rozdělení $\mathrm{G}$ ke~konstrukci tzv. \textbf{asymptotického testu} $\crossedphi_\alpha$, resp. jeho příslušné kritické oblasti
+$$ W_\alpha=\left\{ T_n(\textbf{x})\gtreqless K_\alpha \right\}\equal{\text{resp}.}\left\{ T_n'(\textbf{x})\gtreqless K_\alpha' \right\}\quad\text{tak, aby} $$
+$$ \lim\limits_{n\to+\infty}\PP(\text{chyby I. druhu})=\lim\limits_{n\to+\infty}\PP(T_n(\X)\gtreqless K_\alpha)\equal{\text{resp}}\lim\limits_{n\to+\infty}\PP(T_n'(\X)\gtreqless K_\alpha' )=\alpha\quad\text{za platnosti }H_0. $$
+K doladění konstanty $K_\alpha'$ opět použijeme vhodné typy kvantilů limitního rozdělení $\mathrm{G}$, například $\mathrm{G}_{1-\alpha},$ $\mathrm{G}_\alpha,$ $\mathrm{G}_{1-\frac{\alpha}{2}}$, podle povahy nerovností $\gtreqless$ charakterizující $W_\alpha$. Dosažené signifikanci testu $\alpha$ skrze toto limitní rozdělení $\mathrm{G}$ pak říkáme \textbf{asymptotická hladina} (\textit{size}) testu a~test založený na~takové $W_\alpha$ se~nazývá \textbf{asymptotický (přibližný) test} hypotézy $H_0$ vs. $H_1$.
+
+\section{Asymptotické testy středních hodnot $iid~\LL_2$}
+\begin{theorem}[Jednovýběrový asymptotický test $\mu=\mu_0$]
+	Mějme náhodný výběr $X_1,...,X_n~iid~\LL_2$ pocházející z~libovolného rozdělení s~$\E X_j=\mu$ a~s~konečným rozptylem $\D X_j=\sigma^2>0$, který je neznámý. Testujeme hypotézu $\hypothesis{\mu=\mu_0}{\mu\neq\mu_0}$ (resp. $\mu\gtrless\mu_0$ apod.) na~hladině $\alpha\in(0,1)$. Pak testovací statistika
+	$$ T_n=T_n(\X)=\sqrt{n}~\frac{\oxn-\mu_0}{s_n}\Dto \n{0,1} $$ za~platnosti $H_0$. Následně test $H_0:\mu=\mu_0$, založený na~kritické oblasti $W_\alpha=\left\{ \abs{T_n(\textbf{x})}\geq u_{1-\frac{\alpha}{2}} \right\}$, kde $u_{1-\frac{\alpha}{2}}$ značí kvantil $\n{0,1}$, zamítá $H_0$ na~\textbf{asymptotické hladině} $\alpha$.
+	\begin{proof}
+		Plyne triviálně z~asymptotických vlastností $\Oxn$ a~$s_n$ v~$\LL_2$, viz kapitola 1.
+	\end{proof}
+\end{theorem}
+\begin{remark}
+	Test je asymptotický a~tedy vyžaduje dostupnost dostatečně velkého počtu experimentálních dat $(x_j)_{j=1}^n$, avšak to je vyváženo tím, že statistický (apriorní) model pro~tyto realizace může být zcela neznámého typu, splňující~pouze předpoklad konečného $\sigma^2>0$.
+\end{remark}
+\begin{theorem}\label{veta52}
+	Nechť $X$ a~$Y$ jsou nezávislé z~$\LL_2$ a~mějme dva náhodné výběry (např. testovací a~kontrolní) $(X_i)_{i=1}^{n_1}~iid~\LL_2(\mu_1,\sigma_1^2>0)$ a~ $(Y_j)_{j=1}^{n_2}~iid~\LL_2(\mu_2,\sigma_2^2>0)$. Pak 
+	$$ T_{12}=T_{12}(\X,\Y)=\frac{\Ox{1}-\Oy{2}-(\mu_1-\mu_2)}{\sqrt{\frac{s_1^2}{n_1}+\frac{s_2^2}{n_2}}}\Dto \NN(0,1),\qquad\text{ při~}n_1,n_2\to+\infty. $$
+	\begin{proof}[Schéma důkazu] Zavedeme
+		$$ U_{n}=\sum\limits_{i=1}^{n_1}\underbrace{\frac{1}{n_1}\frac{X_i-\mu_1}{\sigma_{12}}}_{\xi_i}+\sum\limits_{j=1}^{n_2}\underbrace{\frac{-1}{n_2}\frac{Y_j-\mu_2}{\sigma_{12}}}_{\eta_j}=\sum\limits_{i=1}^{n_1}\xi_i+\sum\limits_{j=1}^{n_2}\eta_j, $$ kde $\sigma_{12}:=\sqrt{\frac{\sigma_1^2}{n_1}+\frac{\sigma_2^2}{n_2}}$ a~$n=n_1+n_2$. Nemůžeme použít standardní Lindeberg-Lévyho CLT, protože v~$U_{12}$ nemáme součty stejně rozdělených náhodných veličin. Přímým výpočtem však ověříme, že pro~$\forall i\in\widehat{n_1},~\forall j\in\widehat{n_2}$, platí\\
+		 $\E\xi_i=0,\E\eta_j=0$ a~$\D\xi_i<+\infty,\D\eta_j<+\infty$, přičemž $B_n^2:=\sum\limits_{i=1}^{n_1}\D\xi_i+\sum\limits_{j=1}^{n_2}\D\eta_j=1$, kde jsme označili $n:=n_1+n_2$. Nyní budeme aplikovat obecnější CLT Lindeberg-Fellerův, tzn. je potřeba ověřit Lindebergovu podmínku $LP_n^\epsilon\to0,~\forall\epsilon>0$ (viz 01MIP):
+		$$ LP_n^\epsilon=\sum\limits_{i=1}^{n_1}\E\big[ \xi_i^2 \Identita{|\xi_i|>\epsilon}\big] +\sum\limits_{j=1}^{n_2}\E\big[ \eta_j^2 \Identita{|\eta_j|>\epsilon} \big] \to0,\quad \forall\epsilon>0. $$ Následně z~CLT$_{L-F}$ postupně dostáváme 
+		$$
+		\overline{U}_{n}=\frac{1}{n}U_{n}\sim \AN\Br{\omn,\frac{\overbar{\rule{0ex}{1.2ex}\sigma_n}^2}{n}}=\AN\Br{0,\frac{1}{(n_1+n_2)^2}},\quad\text{tzn. }U_{n}\Dto\n{0,1}. $$
+		Protože víme, že 
+		$$ s_1^2\sj \sigma_1^2~\wedge~s_2^2\sj \sigma_2^2~~~\Rightarrow~~~ \sqrt{\frac{s_1^2}{n_1}+\frac{s_2^2}{n_2}}\sj \sqrt{\frac{\sigma_1^2}{n_1}+\frac{\sigma_2^2}{n_2}} ,$$
+		dostaneme ze~Slutskyho lemmatu finální výsledek $T_{12}\Dto\n{0,1}$.
+	\end{proof}
+\end{theorem}
+
+\begin{dusl}[Dvouvýběrový asymptotický test $\mu_1=\mu_2$]
+	Díky větě \ref{veta52} lze zkonstruovat asymptotický test pro~testování hypotézy $H_0:\mu_1=\mu_2$ v~obecném $\LL_2$ modelu, kdy máme k~dispozici dva nezávislé náhodné výběry ze~dvou potenciálně zcela typově odlišných libovolných ditribucí $\FF_X$ a~$\FF_Y$, o~kterých víme pouze to, že obě distribuce mají konečné neznámé rozptyly $\sigma_1^2>0$, $\sigma_2^2>0$. Test $H_0:\mu_1=\mu_2$, založený na~kritické oblasti 
+	$$ W_\alpha=\left\{ \abs{T_{12}(\textbf{x},\textbf{y})}\geq u_{1-\frac{\alpha}{2}} \right\},\quad\text{kde }T_{12}(\textbf{x},\textbf{y})=\frac{\overline{x_1}-\overline{y_2}}{\sqrt{\frac{s_1^2}{n_1}+\frac{s_2^2}{n_2}}}, $$
+	zamítá $H_0$ na~asymptotické hladině $\alpha$. Hranice zamítnutí $u_{1-\frac{\alpha}{2}}$ zde opět označuje příslušný kvantil Gaussova rozdělení $\n{0,1}$.
+	
+\end{dusl}
+\section{Asymptotický LRT a~Waldův test v~$\R^k$}
+\begin{theorem}\label{veta55}
+	Mějme $\t\in\Theta\subset\R^k$ a~testujeme hypotézu $\hypothesis{\t=\t_0}{\t\neq\t_0}$ na~základě náhodného výběru $X_1,...,X_n~iid~f\in\mathcal{F}$. Nechť jsou dále splněny předpoklady z~věty \ref{ANMLE}  o~asymptotické normalitě MLE odhadů, tedy $\mathcal{F}=\fregml$, a~nechť $\mathbb{I}(\t)$ je spojitá ($k\times k$ Fisherova informační matice) v~bodě $\t_0$. Pak za~platnosti $H_0$ platí
+	$$ \lambda_n(\X)=-2\ln\Lambda(\X)\Dto \chi^2(k). $$ 
+	\begin{proof}
+		Provedeme důkaz pro~dimenzi $k=1$. Předpokládejme, že $H_0:\t=\t_0$ platí a~že $\widehat{\t}_n=\html$ je konzistentním řešením $LE_q$ z~věty \ref{ANMLE}  o~AN MLE odhadů. Pak Taylorem dostaneme 
+	\[
+	\begin{split}
+	\lambda_n(\X)&=-2\ln\Lambda(\X)=-2\ln\frac{\sup\{ L(\t):\t=\t_0 \}}{\sup\{ L(\t):\t\in\Theta \}}=2\br{l(\widehat{\t}_n)-l(\t_0)}=\\&=
+	2 l(\widehat{\t}_n)-2l(\widehat{\t}_n)-2(\t_0-\widehat{\t}_n)\underbrace{l'(\widehat{\t}_n)}_{0}-(\t_0-\widehat{\t}_n)^2 l''(\widehat{\t}_n)+\frac{1}{3}(\widehat{\t}_n-\t_0)^3 l'''(\t_n^\ast),
+	\end{split}
+	\] kde $\t_n^\ast\in\abs{\t_0,\widehat{\t}_n}$. Předchozí vztah upravíme na~
+	$$ \lambda_n(\X)=\left\{ \sqrt{n}(\widehat{\t}_n-\t_0)\Big[ -\frac{1}{n}l''(\widehat{\t}_n) \Big]^{\frac{1}{2}} \right\}^2+\frac{1}{3}(\widehat{\t}_n-\t_0)\big[ \sqrt{n}(\widehat{\t}_n-\t_0) \big]^2\cdot\frac{1}{n}l'''(\t_n^\ast), $$
+	\begin{tabular}{lll}
+	kde & $\sqrt{n}(\widehat{\t}_n-\t_0)\Dto \n{0,\frac{1}{\fisher(\t_0)}}$, & (viz MLE $\htn$ věta  \ref{ANMLE}),\\
+	 & $-\frac{1}{n}l''(\widehat{\t}_n)\Pto \fisher(\t_0)>0$, & (ze spojitosti $\fisher(\t)$ v~$\t_0$), \\
+	  & $(\widehat{\t}_n-\t_0)\Pto 0$, & (z konzistence $\widehat{\t}_n$), \\
+	  & $\big[ \sqrt{n}(\widehat{\t}_n-\t_0) \big]^2\Dto \Big[ \n{0,\frac{1}{\fisher(\t_0)}} \Big]^2$, & $\br{g(t)=t^2\text{ spojitá}}$, \\
+	  & $\abs{\frac{1}{n}l'''(\t_n^\ast)}<M$ s~pravděpodobností jdoucí k~1 & (stejně jako ve~větě \ref{ANMLE} o~MLE).
+	\end{tabular}
+~\\~\\
+Pak celkově ze~Slutskyho lemma dostáváme 
+$$ \lambda_n(\X)\Dto\big[ \n{0,1} \big]^2=\chi^2(1). $$
+	
+	\end{proof}
+\end{theorem}
+\begin{dusl}[Asymptotický LRT]
+	Za předpokladů věty \ref{veta55} je test hypotézy\\ $\hypothesis{\t=\t_0}{\t\neq\t_0}$, založený na~kritické oblasti 
+	$$ W_\alpha=\Big\{ \textbf{x}:\lambda_n(\textbf{x})\geq \chi^2_{1-\alpha}(k) \Big\}, $$
+	kde $\chi^2_{1-\alpha}(k)$ značí $(1-\alpha)$-kvantil příslušného $\chi^2(k)$ rozdělení, je tzv. \textbf{asymptotickým LRT testem}, který zamítá $H_0$ na~asymptotické hladině $\alpha$.
+\end{dusl}
+\begin{theorem}[Waldův test]
+	Nechť $\t\in\Theta\subset\R^k$ a~testujeme $\hypothesis{\t=\t_0}{\t\neq\t_0}$ na~hladině $\alpha\in(0,1)$. Definujeme \textbf{Waldovu testovací statistiku} předpisem 
+	$$ W_{\t_0}(\X)=n(\widehat{\t}_n-\t_0)^T\fisher(\t_0)(\widehat{\t}_n-\t_0), $$
+	kde $\widehat{\t}_n$ je MLE. Pak při~stejných předpokladech jako ve~větě \ref{veta55} platí, že $W_{\t_0}(\X)\Dto \chi^2(k)$ za~platnosti $H_0$ a	\textbf{Waldův test} $H_0$, založený na~CR
+	$$ W_\alpha=\Big\{ \textbf{x}: W_{\t_0}(\textbf{x})\geq \chi^2_{1-\alpha}(k) \Big\} $$ zamítá $H_0$ na~asymptotické hladině $\alpha$.
+	\begin{proof}
+		Důkaz ponechán čtenáři (triviální).
+	\end{proof}
+\end{theorem}
+\begin{remark}
+	Oba testy, asymptotický LRT i~Waldův test jsou konzistentní, tzn. jejich síla/silofunkce splňuje podmínku, že $$ \beta_{W_\alpha}(\t)\to1\text{ při~}n\to+\infty,\quad\forall\t\neq\t_0. $$
+\end{remark}
+
+
+\section{Testy dobré shody (GoF)}
+Testy dobré shody jsou jedním z~velmi užitečných nástrojů při~identifikaci konkrétního typu statistického modelu, který stojí za~naměřenými realizacemi sledované náhodné veličiny (vlastnosti) $X$. Shoda těchto dostupných dat $\mathbf{x}=(x_i)_{i=1}^n$ s~apriorně předpokládaným modelem $F\in\mathcal{F}$ by měla být vždy ověřena ještě předtím než přistoupíme ke~statistickým testům nad~konkrétními parametry $\theta$ tohoto modelu. Tedy chceme-li po~provedeném experimentálním měření nějaké fyzikální či ekonomické veličiny $X$, začít testovat např. hypotézu $H_0: \ \mu=\mu_0$ prostřednictvím klasického $t$-testu, měli bychom nejdříve ověřit fakt, že experimentální data $\mathbf x$ skutečně mohou pocházet z~nějaké Gaussovské distribuce $\NN(\mu,\sigma^2)$ s~potenciálně neznámými parametry $\mu,\sigma^2>0$. Pokud se~takové potvrzení předpokládaného funkčního tvaru statistického modelu nezdaří, je potřeba buď prověřit kvalitu naměřených dat (přeměřit/doměřit data, upravit experiment) nebo přejít k~jinému vhodnějšímu statistickému modelu jiného typu využívající odlišný parametr $\widetilde{\theta}$ co do~jeho významu nebo dimenze. A~znovu testovat shodu dat s~tímto novým modelem.
+
+Je patrné, že tato úloha prověření typu modelu je zcela zásadní a~rozhoduje o~kvalitě celého statistického šetření nebo predikce. Testy dobré shody jsou pouze jedním z~mnoha takových detekčních nástrojů pro~identifikaci relevantního statistického modelu, další možné přístupy viz 01MEX, 01SKE, a~jiné.
+
+\begin{define}
+	Mějme náhodnou veličinu (vlastnost) $X$ na~$(\Omega, \mathcal{A}, \mathbb{P})$ a~příslušný náhodný výběr $X_1,\ldots,X_n$ pocházející z~nějaké neznámé distribuce $\FF$. Volme jednu konkrétní distribuci $\FF_0\in \mathcal{F}$. Pak test hypotézy
+	$$ H_0: \FF=\FF_0 \qquad vs. \qquad H_1: \FF\neq \FF_0 \text{ (resp. } \FF=\FF_1) $$
+	se nazývá \textbf{testem dobré shody} (\textit{GoF - Goodness-of-Fit}) modelu $\FF_0$. Opět volíme hladinu významnosti $\alpha\in(0,1)$ a~testujeme $H_0$ na~této signifikantní hranici pro~chybu I.druhu. Tedy, za~kritickou chybu považujeme rozhodnutí o~zamítnutí modelu $\FF_0$, přestože ten je správný.
+\end{define}
+
+\subsection*{$\chi^2$-testy GoF}
+Za jeden z~nejznámějších GoF testů lze považovat následující $\chi^2$-test, který převádí celou úlohu na~specifický {\em asymptotický} test v~Multinomickém parametrickém modelu za~cenu jistého \emph{binování} (diskretizace) dostupného náhodného výběru $\mathbf X$. Označme $H_X$ obor hodnot náhodné veličiny $X\sim \FF$ a~vytvořme dělení $\{A_1,\dots,A_k\}$ oboru hodnot $H_X$ na~$k$ disjunktních boxů či tříd (binů). Dále zavedeme
+$$ p_j=\PP_\FF(X\in A_j), \qquad p_{0j}=\PP_{\FF_0}(X\in A_j), \qquad\forall j\in \widehat k.$$
+Mějme nyní k~dispozici náhodný výběr $\mathbf X=(X_i)_{i=1}^n~iid~\FF$ a~nechť
+$$ Y_j=\#\left\{i:\ X_i\in A_j\right\}= \sum_{i=1}^n \mathbb I\{X_i\in A_j\}= \sum_{i=1}^n \mathbb I_{A_j}(X_i)$$
+je počet těch pozorování $X_i$ z~$\{X_1,\dots,X_n\}$, která se~vyskytují v~$j$-tém binu $A_j$, $j\in\widehat k$.
+Vzhledem k~$iid$ předpokladu pro~jednotlivá $X_i$ pak plyne, že každé $Y_j \sim \mathrm{Bi}(n,p_j)$, a~proto i~celý vektor
+$ \mathbf Y=(Y_1,\ldots,Y_k)$ má Multinomické rozdělení rozdělení $\mathbf Y \sim \mathrm{Mult}(n,\mathbf p)$, při~označení $\mathbf p=(p_1,\ldots,p_k)$.
+Namísto testu $ H_0: \FF=\FF_0$ vs. $H_1: \FF\neq \FF_0$ pak testujeme parametrickou hypotézu na~hladině $\alpha>0$
+$$ H_0: \mathbf p = \mathbf{p_0} \qquad\text{vs.}\qquad H_1: \mathbf p \neq \mathbf{p_0} \qquad\text{kde }\mathbf p_0= (p_{01},\ldots,p_{0k})$$
+v Multinomickém modelu $\mathbf Y \sim \mathrm{Mult}(n,\mathbf p)$, přičemž $\sum_1^k p_j=\sum_1^k p_{0j}=1$.
+
+\begin{theorem}\label{veta:Pearson3}
+	Nechť $\widehat{p}_j=Y_j/n$ značí MLE odhady parametrů $p_j$ v~binomickém modelu $\mathrm{Bi}(n,p_j)$, $\forall j\in \widehat k$. Následující tři testovací statistiky v~$\mathrm{Mult}(n,\mathbf p)$ modelu
+	\begin{align*}
+	\chi^2(\mathbf Y) & = \sum_{j=1}^k \frac{n(\widehat{p}_j-p_{0j})^2}{p_{0j}}=  \sum_{j=1}^k \frac{(Y_j-np_{0j})^2}{np_{0j}} \qquad\text{(Pearsonova)}, \\
+	\widetilde\chi^2(\mathbf Y) & = \sum_{j=1}^k \frac{n(\widehat{p}_j-p_{0j})^2}{\widehat{p}_j}= \sum_{j=1}^k \frac{(Y_j-np_{0j})^2}{Y_j} \qquad\text{(Neymanova)}, \\
+	\lambda_n(\mathbf Y) & = -2\ln \Lambda(\mathbf Y)= -2\ln \prod_{j=1}^k \left(\frac{p_{0j}}{\widehat{p}_j}\right)^{n\widehat{p}_j} = -2 \sum_{j=1}^k Y_j \ln \left(\frac{np_{0j}}{Y_j}\right) \qquad\text{(LRT stat.)},
+	\end{align*}
+	jsou za~platnosti $H_0: \mathbf p=\mathbf p_0$ asymptoticky ekvivalentní a~všechny konvergují v~distribuci k~limitnímu $\chi^2(k-1)$ rozdělení.
+\end{theorem}
+
+\begin{proof}
+	Protože platí $\sum_1^k p_j=\sum_1^k p_{0j}=1$, je skutečná dimenze testovaného parametrického prostoru $\Theta=\{(p_1,\ldots,p_k): p_j\in(0,1)\}$ rovna $k-1$. Pak z~věty \ref{veta55} o~asymptotickém LRT testu víme, že za~platnosti $H_0$ platí $ \lambda_n (\mathbf Y) \stackrel{\mathscr{D}}{\longrightarrow} \chi^2(k-1)$, protože jsou naplněny předpoklady na~ML-regularitu $\mathrm{Mult}(n,\mathbf p)$ systému. Dále lze ukázat pomocí Taylorova rozvoje funkce\\ $\ln (1+u)$ a~s využitím asymptotických vlastností MLE odhadů $\widehat{p}_j$, že\\ $\lambda_n(\mathbf Y)=\chi^2(\mathbf Y) + o_p(1)$. Pak ze~Slutskyho lemma mají $\lambda_n(\mathbf Y)$ a~$\chi^2(\mathbf Y)$ shodné asymptotické rozdělení. Podobně pro~$\widetilde\chi^2(\mathbf Y)$.
+\end{proof}
+
+\begin{dusl}[Pearson $\chi^2$ GoF]
+	Test $H_0: \mathbf p = \mathbf p_0$ založený na~kritické oblasti
+	$$ W_\alpha=\Big\{ \mathbf y: \chi^2(\mathbf y) \geqslant \chi^2_{1-\alpha}(k-1)\Big\} \qquad (\chi^2_{1-\alpha}\text{ značí kvantil }\chi^2\text{ rozdělení)}$$
+	je asymptotickým Pearsonovým $\chi^2$-testem dobré shody dosahujícím asymptotické signifikance $\alpha$. Podobně pro~$\widetilde\chi^2(\mathbf Y)$ a~$\lambda_n(\mathbf Y)$ testovací statistiky.
+\end{dusl}
+
+Jde o~asymptotický test, tedy je vyžadován jednak dostatečný počet $n$ pozorování $(x_i)_1^n$, obvykle alespoň $n\geqslant 50$, a~současně by měla být splněna podmínka $np_{0j}\geqslant 5$, $\forall j\in\widehat k$. Hodnoty testovacích statistik $\chi^2(\mathbf y)$ a~$\widetilde\chi^2(\mathbf y)$ představují součet vážených kvadratických odchylek tzv.\ \emph{pozorovaných četností} $y_j$ od~\emph{teoretických četností} $np_{0j}$ přes všechny biny $A_j$, $j\in\widehat k$.
+
+\subsection*{Kolmogorov-Smirnovův GoF test}
+Test dobré shody dat s~modelem $ H_0: \FF=\FF_0$ vs. $H_1: \FF\neq \FF_0$ na~hladině $\alpha$ lze také provést čistě neparametrickým způsobem s~využitím empirické distribuční funkce $$\FF_n(t)=\FF_n(t,\mathbf X)=\frac{1}{n}\sum_{i=1}^n \mathbb{I}_{(-\infty,t]}(X_i),$$ jejíž statistické asymptotické vlastnosti byly uvedeny v~kapitole \ref{kapitola2}.
+
+\begin{theorem}
+	Nechť $\mathbf X=(X_i)_1^n$ jsou iid $\FF$ a~$\FF_n$ značí příslušnou empirickou distribuční funkci. Definujeme \textbf{Kolmogorov-Smirnovovu} statistiku
+	$$ D_n(\FF)=\sup_{t\in\mathbb R}\big| \FF_n(t)-\FF(t) \big|= K(\FF_n,\FF) \quad\text{ (Kolmogorovova vzdálenost)}.$$
+	Pak rozdělení $D_n(\FF)$ nezávisí na~modelu $\FF$, tzn.\ $D_n(\FF)$ je PQ pivotem pro~$\FF$. Dále $D_n(\FF)\sj 0$ a~asymptotické rozdělení $\sqrt{n}D_n(\FF)$ je dáno vztahem
+	$$ \lim_{n\to+\infty} \mathbb P(\sqrt{n}D_n(\FF)\leq t)=1-2\sum_{m=1}^\infty (-1)^{m-1} e^{-2m^2t^2} =: G^{\txt{K\!S}}(t), \quad\forall t>0.$$
+\end{theorem}
+
+\begin{proof}
+	Konvergence $D_n(\FF)\sj 0$ byla ukázána již v~kap.2 (Glivenko-Cantelli lemma).
+	Asymptotické rozdělení $G^{\txt{K\!S}}$ ukázal Kolmogorov (1933). Za~DCv zbývá pouze prověřit fakt, že $D_n(\FF)$ je pivotální veličinou.
+\end{proof}
+
+\begin{dusl}[K-S GoF test]
+	Test $H_0: \FF=\FF_0$ založený na~kritické oblasti
+	$$ W_\alpha = \Big\{ \mathbf x: D_n(\FF_0)\geq K_\alpha\Big\} = \Big\{ \mathbf x: \sqrt{n}D_n(\FF_0)\geq K'_\alpha\Big\},$$
+	kde $K'_\alpha=G_{1-\alpha}^{\txt{K\!S}}$ je $(1-\alpha)$-kvantil asymptotického Kolmogorov-Smirnovova rozdělení $G^{\txt{K\!S}}$, je testem $H_0$ na~asymptotické hladině $\alpha$. Tento test se~nazývá \emph{Kolmogorov-Smirnovův} (K-S) neparametrický test dobré shody.
+\end{dusl}
+
+Příslušné hodnoty kvantilů $G_{1-\alpha}^{\txt{K\!S}}$ limitního rozdělení $\sqrt{n}D_n(\FF_0)$, resp. $D_n(\FF_0)$, jsou tabelovány. Pro~jejich přibližný výpočet lze užít aproximaci $G^{\txt{K\!S}}(t)$ konečnou řadou. Použijeme-li takto pouze první člen řady pro~$m=1$, tzn.\ $G^{\txt{K\!S}}(t)\doteq 1-2 e^{-2t^2}$, dostaneme jednoduchý předpis pro~přibližnou hodnotu $(1-\alpha)$-kvantilu K-S rozdělení $K'_\alpha=G_{1-\alpha}^{\txt{K\!S}}\doteq \frac{\sqrt{2}}{2}[\ln 2-\ln \alpha]^{1/2}$.
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\section{Modifikace $\chi^2$-testů dobré shody}
+Pokud potřebujeme testovat shodu dat s~modelem ve~složené podobě, tzn.\
+$$ H_0: \FF=\FF_\theta \quad vs. \quad H_1: \FF\neq \FF_\theta \qquad\text{ na~hladině }\alpha\in(0,1),$$
+kde $\theta\in\Theta\subset\mathbb{R}^s$ je neznámý parametr takový, že $\mathrm{dim}(\Theta)=s$, pak postup testování upravíme následovně. Označíme opět
+$$ p_j=\PP_\FF(X\in A_j), \qquad p_{0j}=p_{0j}(\theta)=\PP_{\FF_\theta}(X\in A_j), \quad\forall j\in \widehat k,$$
+kde nyní $\mathbf p=(p_1,\ldots,p_k)$ a~$\mathbf p_0=\mathbf p_0(\theta) = \br{p_{01}(\theta),\ldots,p_{0k}(\theta)}$.
+Na základě binovaných náhodných veličin $(Y_j)_{j=1}^k$ testujeme v~$\mathrm{Mult}(n,\mathbf p)$ modelu parametrickou hypotézu
+$$ H_0: \mathbf p = \mathbf{p}_0(\theta) \quad\text{ vs. }\quad H_1: \mathbf p \neq \mathbf{p}_0(\theta) \qquad\text{na hladině }\alpha>0. $$
+Protože však nyní vektor $\mathbf p_0$ je funkcí neznámého parametru $\theta$, musíme tento parametr odhadnout za~platnosti $H_0$. Takový vhodný odhad $\widehat\theta_n=\widehat\theta_n(\mathbf Y)$ by měl disponovat dostatečně dobrými asymptotickými vlastnostmi při~$n\to+\infty$. Dostupnou realizaci odhadu $\widehat\theta_n(\mathbf y)$ pak dosadíme do~funkce $\mathbf p_0(\theta)$ a~testujeme již jednoduchou bodovou hypotézu v~Multinomickém modelu na~hladině $\alpha$
+$$ H_0: \mathbf p = \widehat{\mathbf p}_0 \quad\text{ vs. }\quad H_1: \mathbf p \neq \widehat{\mathbf p}_0,
+\qquad\text{kde } \widehat{\mathbf p}_0=\widehat{\mathbf p}_0\br{\widehat\theta_n(\mathbf y)}.$$
+Toto zanesení odhadu $\widehat\theta_n$ do~testované hypotézy $H_0$ však modifikuje asymptotické vlastnosti použitých testovacích statistik.
+
+\begin{theorem}
+	Mějme test $ H_0: \mathbf p = \widehat{\mathbf p}_0$ vs. $H_1: \mathbf p \neq \widehat{\mathbf p}_0$ za~výše uvedených podmínek, kdy $\mathrm{dim}(\Theta)=s$. Nechť $\widehat\theta_n$ značí maximálně věrohodný odhad $\html(\mathbf Y)$ za~platnosti $H_0$.
+	%nebo, alternativně, tzv.\ \emph{minimum $\chi^2$ odhad} $$\widehat\theta_n= \argmin_\theta \sum_{j=1}^k \frac{(Y_j-np_{0j}(\theta))^2}{np_{0j}(\theta)}.$$
+	Pak testovací statistika
+	$$\chi^2(\mathbf Y) = \sum_{j=1}^k \frac{(Y_j-n\widehat p_{0j})^2}{n\widehat p_{0j}} \Dto \chi^2(k-s-1)$$
+	a test založený na~kritické oblasti
+	$$ W_\alpha=\Big\{ \mathbf y: \chi^2(\mathbf y) \geqslant \chi^2_{1-\alpha}(k-s-1)\Big\} \qquad (\chi^2_{1-\alpha}\text{ značí kvantil }\chi^2 \text{ rozdělení)}$$
+	je Pearsonovým $\chi^2$-testem dobré shody dosahujícím asymptotické signifikance $\alpha$. Podobně pro~testovací statistiky $\widetilde\chi^2(\mathbf Y)$ a~$\lambda_n(\mathbf Y)$.
+\end{theorem}
+
+\begin{proof}
+	Podobně jako u~věty \ref{veta:Pearson3} s~využitím asymptotiky (zobecněného) LRT testu (nedělali jsme).
+\end{proof}
+
+\begin{remark}
+	Takto upraveným $\chi^2$-testem dobré shody tedy umíme otestovat například hypotézu $H_0$, zda naše data $\mathbf y$ mohou pocházet z~nějakého libovolného rozdělení ze~systému Gaussovských distribucí, tzn. hypotézu
+	$$ H_0:  \FF \in \mathcal \FF = \{ \mathcal N(\mu, \sigma^2): \theta=(\mu,\sigma^2)\in \mathbb R \times \mathbb{R}^{+}\}.$$ Avšak pozor, dosazované MLE odhady $\widehat \mu_n,\widehat\sigma_n^2$ nejsou běžné MLE odhady parametrů $\mu,\sigma^2$ vytvořené na~základě původně naměřených dat $(x_i)_1^n$, ale na~základě výhradně binovaných dat $(y_j)_1^k$ podléhajících Multinomickému modelu $\mathrm{Mult}(n,\mathbf p_0(\mu, \sigma^2))$. Obecně nesprávný, ale přesto užívaný postup testování normality dat $H_0: \FF=\NN(\mu,\sigma^2)$ je ten, kdy na~základě původních dat $(x_i)_1^n$ jsou spočteny standardní MLE odhady $\widehat\mu=\overline{x}_n$ a~$s_n^2=\sum_1^n(x_i-\overline{x}_n)^2/(n-1)$, poté je náhodný výběr $(X_i)_1^n$ tzv.\ 'standardizován' na~$U_i = (X_i-\overline{x}_n)/ s_n $ a~nakonec je testována hypotéza $H_0: \FF_U= \mathcal N(0,1)$ na~hladině $\alpha$ pomocí běžné Pearsonovy testovací statistiky aplikované na~'standardizovaná' data $(u_i)_1^n$.
+\end{remark}
+

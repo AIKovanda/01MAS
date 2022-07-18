@@ -1,0 +1,84 @@
+
+\chapter{Appendix}
+
+\begin{example}
+	Máme $X_1,..,X_n~iid$. $\sigma_n^2=\frac{1}{n}\sumjn(x_j-\oxnn)^2,~s_n^2=\frac{1}{n-1}\sumjn(x_j-\oxnn)^2$. Obě jsou konzistentní pro $\D X_1$ a $s_n^2$ je nestranný $\D X_1$ - za jakých p.
+	$$ \E\theta_n(X_1,..,X_n)=\theta,~~~\forall\theta\in\Theta $$
+	$$ \widehat{\theta_n}(X_1,...,X_n)\Pto \theta,~~~\forall\theta\in\Theta $$
+	Pokud $\oxn\Pto\E X_1$, pak i $\left( \oxn \right)\Pto (\E X_1)^2$, protože $f(x)=x^2$ je spojitá funkce, díky čemuž se konvergence přenáší. Dále víme, že $\sigma_n^2\Pto \D X_1$, a proto z definice \[
+	\begin{split}
+	\sigma_n^2&=\frac{1}{n}\sumjn(X_j-\oxn)^2=\frac{1}{n}\sumjn(X_j^2-2X_j\oxn+\oxn^2)=\frac{1}{n}\left[ \sumjn X_j^2 - 2\oxn\sumjn X_j+n\oxn^2 \right]=\\&=
+	\underbrace{\frac{1}{n}\sumjn X_j^2}_{\Pto\E X_1^2}-\underbrace{\oxn^2}_{\Pto (\E X_1)^2}\Pto \E X_1^2-(\E X_1)^2=\D X_1
+	\end{split}
+	\]
+	$$ s_n^2=\underbrace{\sigma_n^2}_{\Pto \D X_1}\underbrace{\frac{n}{n-1}}_{\Pto1}\to \D X_1,~~~~~\E(s_n^2)\equal{?}\D X_1 ~~\text{(nestrannost)}$$
+	\[
+	\begin{split}
+	 \E(s_n^2)&=\left( \frac{1}{n-1}\sumjn(X_j-\oxn-\E X_1+\E X_1)^2 \right)=\\&=\E\left( \frac{1}{n-1}\sumjn\left[ (X_j-\E X_1)^2-2(X_j-\E X_1)(\oxn-\E X_1)+(\oxn-\E X_1)^2 \right] \right)=\\&= \frac{1}{n-1}\E\left( \sumjn(x_j-\E X_1)^2-2(\oxn-\E X_1)\left( \sumjn X_j-n\E X_1 \right)\right)+n(\oxn -\E X_1)^2 =\\&= \frac{1}{n-1}\E\left( \sumjn(X_j-\E X_1)^2-n(\oxn-\E X_1)^2 \right)=\frac{1}{n-1}\left(\sumjn\underbrace{\E(X_j-\E X_1)^2}_{\D X_1}-n\underbrace{\E(\oxn-\E X_1)^2}_{\D(\oxn)} \right)=\\&=\frac{1}{n-1}(n\D X_1-\D X_1)=\D X_1 ,
+	\end{split}
+	\] protože $\E\oxn=\E X_1$ a $\D \oxn=\D\Br{ \frac{1}{n}\sumjn X_j} =\frac{1}{n^2}\sumjn \D X_1=\frac{\D X_1}{n}$.
+	$$ \E(\sigma_n^2)=\E\Br{\frac{n-1}{n}s_n^2}=\frac{n-1}{n}\D X_1 $$
+\end{example}
+\begin{example}
+	Máme $X_1,...,X_n\sim U(0,\beta),~\beta>0$ (rovnoměrné rozdělení).\begin{enumerate}
+		\item $T_n(\X)=2\oxn$ nestranné a konzistentní. \\ Nestrannost:
+		$$ f_{X_1}=\frac{1}{\beta},~~~\E(2\oxn)=2\E \oxn=2\E\frac{\sumjn X_j}{n}=\frac{2}{n}\sumjn \E X_j=\frac{2n}{n}\E X_1=\beta $$
+		Konzistence: (pomocí ZVČ)
+		$$ 2\oxn\Pto2\E X_1=\beta $$
+		\item $U_n(\X)=\max\{ X_1,...,X_n \}$. Konzistence a AN. Konzistenci dokážeme z definice, případně použijeme vztah
+		$$ \left. \begin{array}{c}
+	\E T_n(\X)\to\theta	\\ \D T_n(\X)\to 0
+		\end{array}\right\}\Rightarrow T_n(\textbf{x})\Pto \theta . $$
+		$$ \p{|\beta-\max\{X_1,...,X_n\}|\geq \epsilon}\to0 $$
+		\[
+		\begin{split}
+		&\p{|\beta-\max\{X_1,...,X_n\}|\geq \epsilon}=\p{\beta-\max\{X_1,...,X_n\}\geq \epsilon}=\p{\max\{X_1,...,X_n\}\leq \beta-\epsilon}=\\&=\p{\bigcap\limits_{j=1}^n (X_j\leq \beta-\epsilon)}=\prod\limits_{j=1}^n\p{X_j\leq \beta-\epsilon}=\prod\limits_{j=1}^n\FF_{X_j}(\beta-\epsilon)=\left(\frac{\beta-\epsilon}{\beta}\right)^n\to0,~~~\forall0<\epsilon<\beta
+		\end{split}
+		\]
+		$$ \FF_{U_n}(u)=\p{\max\{X_1,...,X_n\}\leq u}=\prod\limits_{j=1}^n\FF_{X_j}(u)=\left( \frac{u}{\beta} \right)^n,~~~f_{U_n}(u)=n\frac{u^{n-1}}{\beta^n},~~~u\in(0,\beta) $$
+		$$ \E U_n=\int\limits_{0}^\beta n\frac{u^n}{\beta^n}\d u=\frac{n}{n+1}\beta\to \beta~\Rightarrow~AN,~~~\E U_n^2=\int\limits_{0}^\beta n\frac{u^{n+1}}{\beta^n}\d u=\frac{n}{n+2}\beta^2 $$
+		$$\D U_n=\E U^2-(\E U)^2=\frac{n}{n+2}\beta^2-\left(\frac{n}{n+1}\right)^2\beta^2=\left( \frac{n}{n+2}-\left(\frac{n}{n+1}\right)^2 \right)\beta^2$$
+		\item $Z_n(\X)=2\widehat{x}_{1/2}$, kde $\hat{x}_\alpha=\begin{cases}
+		x_{([\alpha-n]+1)} \\ \frac{x_{([\alpha-n])}+x_{([\alpha-n]+1)}}{2}
+		\end{cases}$. Z věty víme, že $\widehat{x}_\alpha\sim\AN\left( x_\alpha,\frac{\alpha(1-\alpha)}{n\br{F'(x_\alpha)}^2} \right)$
+		$$ Z_n(\X)\Pto 2x_{1/2}=2\frac{\beta}{2}=\beta,~~~~\widehat{x}_{1/2}\sim\AN\Br{\frac{\beta}{2},\frac{1}{4}\frac{\beta^2}{n}},~~~2\widehat{x}_{1/2}\sim\AN\Br{\beta,\frac{\beta^2}{n}} $$
+	\end{enumerate}
+\end{example}
+\begin{example}
+	Máme $X_1,...,X_n~iid~\Exp(\mu,1),~\mu>0$, tedy $\E X=\mu+1$ a $\D X=1^2=1$. $U_n(\X)=\oxn-1$, nestranný a konzistentní odhad $\mu$.
+	$$ f_{X_1}=\e{-(x-\mu)},x>\mu $$
+	$$ F_{X_1} = 1 - \e{-(x - \mu)},~ x \in (\mu,+\infty)$$
+	\begin{enumerate}
+	\item Konzistence: $$\oxn\Pto \mu+1,~~~\oxn-1\Pto\mu$$ 
+	Nestrannost:
+	$$\E(\oxn-1)=\E\oxn-1=\mu+1-1=\mu$$
+	\item $ T_n(\X)=\min\limits_{i\in\hat{n}}(X_1) $
+	\[
+	\begin{split}
+ 	\FF_{T_n}(t)&=\p{T_n<t}=\p{\min\limits_{i\in\hat{n}}(X_1)\leq t}=1-\p{\min\limits_{i\in\hat{n}}(X_1)>t}\\ &=1-\prod\limits_{j=1}^n\Br{1-\FF_{X_i}(t)}=1-\Br{1-\FF_{X_1}(t)}^n\\
+	f_{T_n}(t)&=n\Br{1-\FF_{X_1}(t)}^{n-1}f_{X_1}(t)=n\e{-(t-\mu)}\br{\e{-(t-\mu)}}^{n-1}=n\e{-n(t-\mu)},~t>\mu \\
+	\E T_n&=\int\limits_{\mu}^{+\infty}nt\e{-n(t-\mu)}\d t\equal{...}\frac{1}{n}+\mu\\
+	\E T_n^2&=\int\limits_{\mu}^{+\infty}nt^2\e{-n(t-\mu)}\d t\equal{...}\frac{2}{n^2}+\frac{2\mu}{n}+\mu^2\\
+	\D T_n&=\frac{1}{n^2}\to 0
+	\end{split}
+	\]
+\end{enumerate}
+\end{example}
+
+\begin{example}
+	Mějme náhodné veličiny $X_1,...,X_n~iid~\Be(p)$. Jaké je UMPU pro $\hypothesis{p\geq p_0}{p<p_0}$? Aproximuje chybu pomocí CLT. Použijeme na to větu !!! cosi !!!
+	$$ f_{X_j}(x_j)=p^{x_j}(1-p)^{1-x_j}=\Br{\frac{p}{1-p}}^{x_j}\underbrace{(1-p)}_{C(p),h(x_j)=1}=(1-p)\e{x_j\ln(\frac{p}{1-p})} $$
+	$T(x_j)=X_j(Id)$, $Q(p)=\ln\Br{\frac{p}{1-p}}$ je rostoucí, a proto
+	$ \frac{1-p+1}{1-p}\Rightarrow \ln\underbrace{\Br{1+\frac{1}{1-p}}}_{>0} $.
+	$$ \Phiast=\begin{cases}
+	1&\sumjn x_j<K,\\\gamma&\sumjn x_j=K,\\0&\sumjn x_j>K.
+	\end{cases} $$
+	$\sumjn X_j\sim\Bi(n,p)$.
+	$$ \beta_{\Phiast}(p_0)=\PP\bigg(\underbrace{\frac{\sum_{j=1}^n x_j-np_0}{\sqrt{n(p_0(1-p_0))}}}_{\Dto\n{0,1}}\leq K'\bigg)=\alpha=\FF_X(u_\alpha)=\p{X\leq u_\alpha}$$
+	$$ W:~\frac{\sum_{j=1}^n x_j-np_0}{\sqrt{n(p_0(1-p_0))}}\leq u_\alpha\sim \sqrt{n}\frac{\widehat{p}-p_0}{\sqrt{p_0(1-p_0)}}\leq u_\alpha. $$
+	Výrobce tvrdí, že lék je účinný v 75\% případů. Nemocnice zaznamenala 136/250 pacientů. Je rozdíl statisticky významný na hladině $\alpha=0.05$?
+	Ze značení minule: $p_0=75$. je nebo není účinek $X_1,...,X_{200}\sim\Be(p)$
+	$$ \hypothesis{p\geq p_0}{p<p_0} $$ při zamítnutí výrobce lže s pravděpodobností chyby 5\%.
+	$$ W=\frac{\sum_{j=1}^n x_j-np_0}{\sqrt{n(p_0(1-p_0))}}\leq u_\alpha $$
+	$$ \frac{136-200\cdot 0.75}{\sqrt{200\cdot 0.75(1-0.75)}}\leq u_{0.05}=-1.645, $$ což je splněno, a tedy zamítáme $H_0$.
+\end{example}	
